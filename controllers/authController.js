@@ -11,31 +11,6 @@ const fs = require('fs')
 const RegisterController = (req,res) => {
      // Get all data value
      const data = req.body // {email,password}
-     // validasi data
- 
-     // if(data.email && data.password){
-     //     if(!(validator.isEmail(data.email))){
-     //         res.status(406).send({
-     //             error : true,
-     //             message : "Email Format Wrong"
-     //         })
-     //     }
- 
-     //     if(data.password.length < 8){
-     //         res.status(406).send({
-     //             error : true,
-     //             message : "Password too short"
-     //         })
-     //     }
- 
-     //     res.send('success')
- 
-     // }else{
-     //     res.status(406).send({
-     //         error : true,
-     //         message : "data not complete (username or password)"
-     //     })
-     // }
  
      try {
          // validasi data
@@ -58,7 +33,7 @@ const RegisterController = (req,res) => {
                              if(err) throw err
                             //  console.log(result)
                              
-                             fs.readFile('/Users/jamaludinfikri/Documents/Purwadhika/Mobile/hoteloka/backend/backend/template/emailConfirmation.html',{encoding : 'utf-8'},(err,file) => {
+                             fs.readFile('/Users/macbookpro/Documents/Purwadhika/React-Native/erbenbe/bekend/hoteloka-backend/template/emailConfirmation.html',{encoding : 'utf-8'},(err,file) => {
                                     if(err) throw err
                                     const template = handlebars.compile(file)
                                     const hasilTemplating = template({email : data.email , link :"http://localhost:3000/verification/" + respInsert.insertId + '/' + passwordHashed , text1 : "ini merupakan deskripsi teks 1",text2 : "ini merupakan deskripsi teks 2"})
@@ -120,7 +95,7 @@ const RegisterController = (req,res) => {
                  })
              }
          })
- 
+
          
  
  

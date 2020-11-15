@@ -2,13 +2,12 @@ const jwt = require('jsonwebtoken')
 
 
 const jwtVerify = (req,res,next) => {
-    const token = req.body.token
-    if(!token) return res.json({error : true,message :"Token not found"})
-    jwt.verify(token , '123abc' , (err,data) => {
+    const token = req.query.id
+    if(!token) return res.json({error : true ,message : "Token not found"})
+    jwt.verify(token , '123abc' , (err,token) => {
         try {
             if(err) throw err
-            req.bebas = data
-            req.fikri = 'fikri'
+            req.token = token
             next()
         } catch (error) {
             res.json({
